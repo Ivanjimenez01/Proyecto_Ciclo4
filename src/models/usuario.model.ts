@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Pedido} from './pedido.model';
 
 @model()
@@ -45,18 +45,24 @@ export class Usuario extends Entity {
     required: true,
   })
   direccion: string;
-
+/*
   @property({
     type: 'string',
-    required: true,
+    required: false,
   })
   clave: string;
-
+*/
   @property({
     type: 'string',
     required: true,
   })
   rol: string;
+
+  @property({         //arreglo
+    type: 'string',
+    required: false,
+  })
+  clave: string;       //fin del arreglo
 
   @hasMany(() => Pedido)
   pedidos: Pedido[];
